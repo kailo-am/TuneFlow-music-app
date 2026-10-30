@@ -1,0 +1,81 @@
+.app {
+    min-height: 100vh;
+    background: #121212;
+    color: white;
+    padding: 30px;
+}
+
+.home-page {
+    max-width: 1400px;
+    margin: auto;
+}
+
+.home-page header {
+    margin-bottom: 40px;
+}
+
+.home-page header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.home-page header p {
+    color: #aaa;
+}
+
+.tracks-section h2 {
+    margin-bottom: 25px;
+}
+
+.tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 22px;
+}
+
+.track-card {
+    background: #202020;
+    padding: 16px;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.track-card:hover {
+    background: #303030;
+}
+
+.track-cover {
+    height: 170px;
+    background: linear-gradient(135deg, #7028e4, #21104b);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.track-card h3 {
+    margin-bottom: 7px;
+}
+
+.track-card p {
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.track-card span {
+    font-size: 12px;
+    color: #b99aff;
+}
+
+.track-card button {
+    display: block;
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
