@@ -7,7 +7,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Track
 from .serializers import TrackSerializer
-
+from .services import search_audius_tracks
+import requests
 
 @api_view(['GET'])
 def music_home(request):
@@ -28,8 +29,25 @@ class TrackListView(generics.ListAPIView):
       filters.SearchFilter,
       filters.OrderingFilter,
    ]
+
    # Define the fields that can be filtered, searched, and ordered
    filterset_fields = ['title', 'artist', 'album', 'genre']
    search_fields = ['title', 'artist', 'album', 'genre']
    ordering_fields = ['title', 'artist', 'album', 'genre']
    ordering = ['title']  # Default ordering
+
+@api_view(["GET"])
+def audius_search(request):
+    query = request.query_params.get("q", "").strip()
+
+    if not query:
+        return Response({"results": []})
+
+    try:
+        tracks = search_audius_tracks(query)
+        return Response({"results": tracks})
+    except requests.RequestException:
+        return Response(
+            {"error": "Audius search is temporarily unavailable."},
+            status=502,
+        )
